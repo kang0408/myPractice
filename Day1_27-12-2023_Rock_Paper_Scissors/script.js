@@ -5,7 +5,7 @@ function ranNum() {
     else return 'scissors';
 }
 
-// get display resullt
+// get display result
 let resultElement = document.querySelector('.js-result');
 let resultTieElement = document.querySelector('.js-result-tie');
 
@@ -14,8 +14,8 @@ let youResultElement = document.querySelector('.js-you-result');
 let botResultElement = document.querySelector('.js-bot-result');
 
 // get picked to display on screen
-let playerPickImg = document.getElementsByClassName('js-player-picked');
-let botPickImg = document.getElementsByClassName('js-bot-picked');
+let playerPickImg = document.querySelector('.js-player-picked');
+let botPickImg = document.querySelector('.js-bot-picked');
 
 // get score
 let youScoreElement = document.getElementsByClassName('js-you-score');
@@ -42,6 +42,8 @@ function displayScore(youResult, botResult) {
     } 
 
     // History
+    console.log(getCurrentTime());
+
     youScoreElement[0].innerHTML = score.youScore;
     botScoreElement[0].innerHTML = score.botScore;
 
@@ -55,26 +57,49 @@ function picked(move) {
     const youPicked = move;
     let youResult = '';
     let botResult = '';
+    let playerImg = '';
+    let botImg = '';
 
+    // Change img of player picked
+    if (youPicked === 'rock') {
+        playerImg = moveObj.rock;
+    }
+    else if (youPicked === 'paper') {
+        playerImg = moveObj.paper;
+    }
+    else {
+        playerImg = moveObj.scissors;
+    }
+
+    if (botPicked === 'rock') {
+        botImg = moveObj.rock;
+    }
+    else if (botPicked === 'paper') {
+        botImg = moveObj.paper;
+    }
+    else {
+        botImg = moveObj.scissors;
+    }
+
+    console.log(playerImg);
+    console.log(botImg);
+
+    playerPickImg.src = playerImg;
+    botPickImg.src = botImg;
+
+
+    // Result
     // You picked rock
     if (youPicked === 'rock') {
-        playerPickImg[0].src = moveObj.rock;
-        playerPickImg[1].src = moveObj.rock;
-
         if (botPicked === 'rock') {
-            botPickImg[0].src = moveObj.rock;
-            botPickImg[1].src = moveObj.rock;
+            botResult = 'tie';
             youResult = 'tie';
         }
         else if (botPicked === 'paper') {
-            botPickImg[0].src = moveObj.paper;
-            botPickImg[1].src = moveObj.paper;
             youResult = 'lose';
             botResult = 'win';
         }
         else {
-            botPickImg[0].src = moveObj.scissors;
-            botPickImg[1].src = moveObj.scissors;
             youResult = 'win';
             botResult = 'lose';
         }
@@ -82,23 +107,15 @@ function picked(move) {
 
     // You picked paper
     if (youPicked === 'paper') {
-        playerPickImg[0].src = moveObj.paper;
-        playerPickImg[1].src = moveObj.paper;
-
         if (botPicked === 'paper') {
-            botPickImg[0].src = moveObj.paper;
-            botPickImg[1].src = moveObj.paper;
+            botResult = 'tie';
             youResult = 'tie';
         }
         else if (botPicked === 'scissors') {
-            botPickImg[0].src = moveObj.scissors;
-            botPickImg[1].src = moveObj.scissors;
             youResult = 'lose';
             botResult = 'win';
         }
         else {
-            botPickImg[0].src = moveObj.rock;
-            botPickImg[1].src = moveObj.rock;
             youResult = 'win';
             botResult = 'lose';
         }
@@ -106,23 +123,15 @@ function picked(move) {
 
     // You picked scissors
     if (youPicked === 'scissors') {
-        playerPickImg[0].src = moveObj.scissors;
-        playerPickImg[1].src = moveObj.scissors;
-
         if (botPicked === 'scissors') {
-            botPickImg[0].src = moveObj.scissors;
-            botPickImg[1].src = moveObj.scissors;
+            botResult = 'tie';
             youResult = 'tie';
         }
         else if (botPicked === 'rock') {
-            botPickImg[0].src = moveObj.rock;
-            botPickImg[1].src = moveObj.rock;
             youResult = 'lose';
             botResult = 'win';
         }
         else {
-            botPickImg[0].src = moveObj.paper;
-            botPickImg[1].src = moveObj.paper;
             youResult = 'win';
             botResult = 'lose';
         }
@@ -136,7 +145,7 @@ function picked(move) {
     if (youPicked !== botPicked) {
         resultElement.style.display = 'block';
         resultTieElement.style.display = 'none';
-        
+
         youResultElement.innerHTML = youResult;
         botResultElement.innerHTML = botResult;
     }
@@ -145,6 +154,49 @@ function picked(move) {
         resultTieElement.style.display = 'block';
     }
 
+    renderHistory(youResult, playerImg, botResult, botImg);
+
     displayScore(youResult, botResult);
     console.log(score);
+}
+
+function getCurrentTime() {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    const d = new Date();
+
+    return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()} ${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+}
+
+console.log(getCurrentTime());
+
+// Render history
+let historyHTML = '';
+function renderHistory(youResult, playerImg, botResult, botImg) {
+    const html = `
+        <div class="item-hs">
+            <div class="date">
+                <p>${getCurrentTime()}</p> 
+            </div>
+            <div class="info flex">
+                <div class="item-you flex alg-center">
+                    <div class="img img-you sz-50px">
+                        <img src="${playerImg}" alt="">
+                    </div>
+                    <p>${youResult}</p>
+                </div>
+                <hr>
+                <div class="item-bot flex alg-center">
+                    <div class="img img-bot sz-50px">
+                        <img src="${botImg}" alt="">
+                    </div>
+                    <p>${botResult}</p>
+                </div>
+            </div>
+        </div>
+    `;
+    historyHTML += html;
+    document.querySelector('.history-list').innerHTML = historyHTML;
 }

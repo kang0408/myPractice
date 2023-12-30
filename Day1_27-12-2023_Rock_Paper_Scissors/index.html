@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="history">
+            <p class="heading">History</p>
+            <div class="content">
+                <div class="content-heading">
+                    <p>
+                        YOU - 
+                        <span class="js-you-score">0</span>
+                    </p>
+                    <p>
+                        BOT - 
+                        <span class="js-bot-score">0</span>
+                    </p>
+                </div>
+                <div class="history-list">
+                    <div class="item-hs">
+                        <p class="date">
+                            Fri Dec 29 2023 
+                            10:54:33
+                        </p>
+                        <div class="info">
+                            <div class="item-you">
+                                <div class="img-you sz-150px">
+                                    <img class="js-player-picked" src="" alt="">
+                                </div>
+                                <p>win</p>
+                            </div>
+                            <div class="divide">
+                                <hr>
+                            </div>
+                            <div class="item-bot">
+                                <div class="img-bot sz-150px">
+                                    <img class="js-bot-picked" src="" alt="">
+                                </div>
+                                <p>win</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-play flex jtf-center alg-center">
+            <div class="result">
+                <p class="js-result">
+                    YOU 
+                    <span class="js-you-result"></span> 
+                    & 
+                    BOT 
+                    <span class="js-bot-result"></span>
+                </p>
+                <p class="js-result-tie">
+                    YOU & BOT
+                    <span class="js-tie">TIE</span>
+                </p>
+            </div>
+            <div class="score flex jtf-between">
+                <p class="you-score js-you-score">0</p>
+                <!-- <p>-</p> -->
+                <p class="bot-score js-bot-score">0</p>
+            </div>
+            <div class="display flex jtf-between alg-center">
+                <div class="player sz-150px">
+                    <img class="js-player-picked" src="" alt="">
+                </div>
+                <div class="divide">
+                    <hr>
+                </div>
+                <!-- <p>:</p> -->
+                <div class="bot sz-150px">
+                    <img class="js-bot-picked" src="" alt="">
+                </div>
+            </div>
+            <div class="played flex alg-center">
+                <p>YOU PICK</p>
+                <div class="pick flex jtf-between alg-center">
+                    <div onclick="picked('rock')" class="rock sz-75px">
+                        <img src="./img/punch.png" alt="">
+                    </div>
+                    <div onclick="picked('paper')" class="paper sz-75px">
+                        <img src="./img/hand-paper.png" alt="">
+                    </div>
+                    <div onclick="picked('scissors')" class="scissors sz-75px">
+                        <img src="./img/scissors.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="./script.js"></script>
+</body>
+</html>

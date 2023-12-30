@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body img {
+    width: 100%;
+}
+
+.sz-150px {
+    width: 150px;
+}
+
+.sz-75px {
+    width: 75px;
+}
+
+.flex {
+    display: flex;
+}
+
+.jtf-center {
+    justify-content: center;
+}
+
+.jtf-between {
+    justify-content: space-between;
+}
+
+.alg-center {
+    align-items: center;
+}
+
+.wrap-play {
+    flex-direction: column;
+    /* width: 60%; */
+    flex: 3;
+}
+
+/* Result */
+.result {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.result p {
+    letter-spacing: 4px;
+    font-size: 24px;
+}
+
+.result p span:first-child {
+    border-bottom: 3px solid #000;
+}
+
+.result span {
+    font-size: 40px;
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.result .js-result {
+    display: block;
+}
+
+.result .js-result-tie {
+    display: none;
+}
+
+/* Score */
+.score {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.you-score {
+    margin-right: 130px;
+}
+
+.bot-score {
+    margin-left: 130px;
+}
+
+
+/* Display */
+.display {
+    position: relative;
+    width: 482px;
+    height: 200px;
+    border-radius: 5000px;
+    border: 3px solid #000;
+    padding: 0 22px;
+    box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.49);
+}
+
+.display .divide {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.display hr {
+    width: 228px;
+    border: solid 2px #000;
+    transform: rotate(120deg);
+}
+
+.display p {
+    font-size: 50px;
+}
+
+.played {
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.played p {
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.pick {
+    width: 270px;
+    height: 90px;
+    padding: 6px 6px 1px;
+    border: solid 2px #000;
+    border-radius: 43px;
+    box-shadow: 0px 0px 7px -2px rgba(0,0,0,0.49);
+    
+}
+
+.pick > div {
+    transition: width 0.2s, height 0.25s;
+}
+
+.pick > div:hover {
+    width: 85px;
+    height: 85px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* history */
+.history {
+    width: 356px;
+    height: 100%;
+    border-right: 3px solid #000;
+    background-color: #f8f9ff;
+    border-radius: 12px;
+    box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.49);
+}

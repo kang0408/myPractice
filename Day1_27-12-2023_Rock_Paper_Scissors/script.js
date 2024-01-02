@@ -200,3 +200,21 @@ function renderHistory(youResult, playerImg, botResult, botImg) {
     historyHTML += html;
     document.querySelector('.history-list').innerHTML = historyHTML;
 }
+
+// Display history
+const historyElement = document.querySelector('.history');
+const openHistory = document.querySelector('.open-hs');
+const exitHistory = document.querySelector('.close-hs')
+const playAreaElement = document.querySelector('.play-area');
+
+openHistory.onclick = function() {
+    playAreaElement.style.left = '724px';
+
+    historyElement.style.left = '0';
+    historyElement.style.transition = 'all .8s ease-in-out';
+}
+
+exitHistory.onclick = () => {
+    historyElement.style.left = '-31%';
+    playAreaElement.style.left = '503px';
+}

@@ -60,6 +60,7 @@ body img {
     overflow-y: scroll;
     position: absolute;
     left: -31%;
+    /* left: 0; */
 }
 
 .history .heading {
@@ -167,7 +168,36 @@ body img {
 
 .container .open-hs:hover i {
     cursor: pointer;
+    color: rgb(86, 86, 252);
+}
+
+/* Reset button */
+.container .reset-score {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: -40px;
+    top: 21%;
+    background-color: #f8f9ff;
+    box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.49);
+    border-top: 3px solid #000;
+    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
+    border-radius: 0 5px 5px 0;
+    transition: all .25s ease-in-out;
+}
+
+.container .reset-score:hover {
+    cursor: pointer;
     left: 0;
+}
+
+.container .reset-score i {
+    font-size: 20px;
+}
+
+.container .reset-score:hover i {
+    cursor: pointer;
     color: rgb(86, 86, 252);
 }
 
